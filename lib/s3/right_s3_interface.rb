@@ -187,6 +187,7 @@ module RightAws
         #
       headers['content-type'] ||= ''
       headers['date']           = Time.now.httpdate
+      headers['x-amz-security-token'] = @params[:token] if params[:token]
         # create request
       request      = "Net::HTTP::#{method.capitalize}".right_constantize.new(path)
       request.body = data if data
